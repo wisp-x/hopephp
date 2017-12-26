@@ -12,18 +12,18 @@
 
 // [ 框架引导文件 ]
 
-namespace core;
+namespace hope;
 
 // 常量配置
-define('HI_VERSION', '1.0');
-define('START_TIME', microtime(true));
-define('START_MEM', memory_get_usage());
-define('EXT', '.php');
-define('DS', DIRECTORY_SEPARATOR);
-define('THIS_PATH', __DIR__ . DS);
-defined('CORE_PATH') or define('CORE_PATH', ROOT_PATH . 'core' . DS);
+defined('HOPE_VERSION') or define('HOPE_VERSION', '1.0');
+defined('START_TIME') or define('START_TIME', microtime(true));
+defined('START_MEM') or define('START_MEM', memory_get_usage());
+defined('EXT') or define('EXT', '.php');
+defined('DS') or define('DS', DIRECTORY_SEPARATOR);
+defined('THIS_PATH') or define('THIS_PATH', __DIR__ . DS);
+defined('HOPE_PATH') or define('HOPE_PATH', ROOT_PATH . 'hopephp' . DS);
 defined('APP_PATH') or define('APP_PATH', ROOT_PATH . 'app' . DS);
-defined('LIB_PATH') or define('LIB_PATH', ROOT_PATH . 'library' . DS);
+defined('LIB_PATH') or define('LIB_PATH', HOPE_PATH . 'library' . DS);
 defined('VENDOR_PATH') or define('VENDOR_PATH', ROOT_PATH . 'vendor' . DS);
 defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
 defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config' . DS);

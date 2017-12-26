@@ -16,4 +16,4 @@
 define('ROOT_PATH', __DIR__ . '/../');
 
 // 加载框架引导文件
-require __DIR__ . '/../core/start.php';
+require __DIR__ . '/../hopephp/start.php';

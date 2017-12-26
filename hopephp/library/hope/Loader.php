@@ -43,7 +43,7 @@ class Loader
     private static function findFile($class)
     {
         $namespace = substr($class, 0, strpos($class, '\\'));
-        $filePath = substr($class, strlen($namespace)) . '.php';
+        $filePath = substr($class, strlen($namespace)) . EXT;
         return strtr($namespace . $filePath, '\\', DIRECTORY_SEPARATOR);
     }
 }

@@ -45,13 +45,13 @@ class App
         require_once VENDOR_PATH . 'autoload' . EXT;
 
         // 加载助手函数
-        include CORE_PATH . 'helper' . EXT;
+        include HOPE_PATH . 'helper' . EXT;
 
         // 读取配置
-        $files = File::getFolder(CONF_PATH)['file'];
+        $files = File::getFolder(HOPE_PATH)['file'];
         foreach ($files as $item => $file) {
-            if(is_file(CONF_PATH . $file)) {
-                $conf = Config::load(CONF_PATH . $file);
+            if(is_file(HOPE_PATH . $file)) {
+                $conf = Config::load(HOPE_PATH . $file);
                 if($item === 0) {
                     $config = $conf;
                 } else {
