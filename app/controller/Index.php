@@ -21,6 +21,7 @@ class Index
         /*$article = Article::find(1);
         dump($article->title);*/
 
-        require APP_PATH . 'view/index/index' . EXT;
+        throw new \Exception('自定义异常');
+
     }
 }

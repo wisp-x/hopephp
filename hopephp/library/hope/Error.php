@@ -14,8 +14,6 @@
 
 namespace hope;
 
-use hope\exception\ErrorException;
-
 class Error
 {
     /**
@@ -23,7 +21,7 @@ class Error
      */
     public static function register()
     {
-        error_reporting(E_ALL);
+        error_reporting(0);
         set_error_handler([__CLASS__, 'error']);
         set_exception_handler([__CLASS__, 'exception']);
         register_shutdown_function([__CLASS__, 'shutdown']);
@@ -36,17 +34,15 @@ class Error
      * @param  string  $errfile    出错的文件
      * @param  integer $errline    出错行号
      * @param  array   $errcontext 出错上下文
-     * @throws ErrorException
+     * @throws Exception
      */
     public static function error($errno, $errstr, $errfile = '', $errline = 0, $errcontext = [])
     {
-        $exception = new ErrorException($errno, $errstr, $errfile, $errline, $errcontext);
+        $exception = new Exception($errno, $errstr, $errfile, $errline, $errcontext);
 
-        // 符合异常处理的则将错误信息托管至 lib\exception\ErrorException
         if (error_reporting() & $errno) {
             throw $exception;
         }
-        //trigger_error('error!', E_USER_NOTICE);
     }
 
     /**
@@ -55,9 +51,8 @@ class Error
      */
     public static function shutdown()
     {
-        // 将错误信息托管至 lib\ErrorException
         if (!is_null($error = error_get_last()) && self::isFatal($error['type'])) {
-            self::exception(new ErrorException(
+            self::exception(new Exception(
                 $error['type'], $error['message'], $error['file'], $error['line']
             ));
         }
@@ -81,8 +76,20 @@ class Error
      */
     public static function exception($e)
     {
-        // TODO 将错误数据渲染到视图
-        echo '<pre>';
-        exit(var_dump($e));
+        // TODO 判断是否是调试模式
+        // 设置错误数据
+        $data = [
+            'tables'    => [
+                'GET Data'              => $_GET,
+                'POST Data'             => $_POST,
+                'Files'                 => $_FILES,
+                'Cookies'               => $_COOKIE,
+                'Session'               => isset($_SESSION) ? $_SESSION : [],
+                'Server/Request Data'   => $_SERVER,
+                'Environment Variables' => $_ENV,
+            ]
+        ];
+        $e->error = $data;
+        require HOPE_PATH . 'temp/exception' . EXT;
     }
 }
