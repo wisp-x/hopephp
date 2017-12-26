@@ -18,7 +18,9 @@ class Index
 {
     public function index()
     {
-        $article = Article::find(1);
-        dump($article->title);
+        /*$article = Article::find(1);
+        dump($article->title);*/
+
+        require APP_PATH . 'view/index/index' . EXT;
     }
 }
