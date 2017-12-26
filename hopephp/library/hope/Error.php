@@ -18,12 +18,15 @@ use hope\exception\ErrorException;
 
 class Error
 {
+    /**
+     * 注册异常处理
+     */
     public static function register()
     {
-        /*error_reporting(E_ALL);
+        error_reporting(E_ALL);
         set_error_handler([__CLASS__, 'error']);
         set_exception_handler([__CLASS__, 'exception']);
-        register_shutdown_function([__CLASS__, 'shutdown']);*/
+        register_shutdown_function([__CLASS__, 'shutdown']);
     }
 
     /**
