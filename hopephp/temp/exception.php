@@ -30,6 +30,10 @@
         color: #2e3437;
         font-family: Consolas;
     }
+    .body .item p:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
     .footer {
         margin-top: 15px;
         color: #636b6f;
