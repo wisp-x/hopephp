@@ -18,22 +18,28 @@ class App
     public static $debug;
 
     /**
-     * 执行应用，返回全局配置
+     * 运行应用
      * @return array
+     * @throws Exception
      */
     public static function run()
     {
-        $config = self::init();
+        try {
 
-        // 设置系统时区
-        date_default_timezone_set($config['default_timezone']);
+            $config = self::init();
 
-        // 是否开启debug
-        self::$debug = $config['app_debug'];
+            // 设置系统时区
+            date_default_timezone_set($config['default_timezone']);
 
-        // 初始化路由
-        Route::init();
+            // 是否开启debug
+            self::$debug = $config['app_debug'];
 
+            // 初始化路由
+            Route::init();
+
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
         return $config;
     }
 
