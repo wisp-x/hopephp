@@ -14,8 +14,9 @@ namespace app\controller;
 
 use app\model\Article;
 use hope\Config;
+use hope\Controller;
 
-class Index
+class Index extends Controller
 {
     public function index()
     {

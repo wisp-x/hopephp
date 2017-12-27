@@ -63,6 +63,11 @@ class App
             require $path . 'common' . EXT;
         }
 
+        // 如果有自定义配置则加载
+        if (is_file($path . 'config' . EXT)) {
+            require $path . 'config' . EXT;
+        }
+
         return $config;
     }
 }

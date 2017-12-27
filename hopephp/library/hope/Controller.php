@@ -14,6 +14,25 @@
 
 namespace hope;
 
+use traits\Jump;
+
 class Controller
 {
+    use Jump;
+
+    public function __construct()
+    {
+    }
+
+    protected function fetch()
+    {
+    }
+
+    protected function display()
+    {
+    }
+
+    protected function assign()
+    {
+    }
 }

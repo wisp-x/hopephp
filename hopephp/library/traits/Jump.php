@@ -14,5 +14,19 @@ namespace traits;
 
 trait Jump
 {
+    protected function success()
+    {
+    }
 
+    protected function error()
+    {
+    }
+
+    protected function result()
+    {
+    }
+
+    protected function redirect()
+    {
+    }
 }
