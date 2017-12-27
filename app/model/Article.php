@@ -9,7 +9,7 @@
 
 namespace app\model;
 
-use hope\Model;
+use think\Model;
 
 class Article extends Model
 {
