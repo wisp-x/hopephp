@@ -25,9 +25,7 @@ class Index
 
         //throw new \Exception('自定义异常');
 
-        //exit(dump(Config::get()));
-
-        exit(dump(Config::get('cache')));
+        exit(dump(Config::get()));
 
     }
 }
