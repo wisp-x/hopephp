@@ -53,18 +53,8 @@ class App
         // 加载助手函数
         include HOPE_PATH . 'helper' . EXT;
 
-        // 读取配置
-        $files = File::getFolder(CONF_PATH)['file'];
-        foreach ($files as $item => $file) {
-            if(is_file(CONF_PATH . $file)) {
-                $conf = Config::load(CONF_PATH . $file);
-                if($item === 0) {
-                    $config = $conf;
-                } else {
-                    $config[basename($file, EXT)] = $conf;
-                }
-            }
-        }
+        // 初始化系统配置
+        $config = Config::init();
 
         $path = APP_PATH . $module;
 

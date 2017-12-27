@@ -16,9 +16,41 @@ namespace hope;
 
 class Config
 {
-    public static function get()
-    {
+    // 系统配置
+    protected static $config;
 
+    /**
+     * 初始化系统配置
+     * @return mixed
+     */
+    public static function init()
+    {
+        $files = File::getFolder(CONF_PATH)['file'];
+        foreach ($files as $item => $file) {
+            if(is_file(CONF_PATH . $file)) {
+                $conf = self::load(CONF_PATH . $file);
+                if($item === 0) {
+                    self::$config = $conf;
+                } else {
+                    self::$config[basename($file, EXT)] = $conf;
+                }
+            }
+        }
+        return self::$config;
+    }
+
+    /**
+     * 获取配置数据
+     * @param string $data
+     * @return array
+     */
+    public static function get($data = '')
+    {
+        if(!empty($data)) {
+            // TODO 解析配置
+        }
+        // 返回所有配置
+        return self::$config;
     }
 
     /**
