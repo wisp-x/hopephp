@@ -24,12 +24,12 @@ namespace hope;
  */
 class Route
 {
-    public static $halts = false;
-    public static $routes = array();
-    public static $methods = array();
-    public static $callbacks = array();
-    public static $maps = array();
-    public static $patterns = array(
+    public static $halts        = false;
+    public static $routes       = array();
+    public static $methods      = array();
+    public static $callbacks    = array();
+    public static $maps         = array();
+    public static $patterns     = array(
         ':any' => '[^/]+',
         ':num' => '[0-9]+',
         ':all' => '.*'
@@ -186,7 +186,7 @@ class Route
             if (!self::$error_callback) {
                 self::$error_callback = function () {
                     header($_SERVER['SERVER_PROTOCOL'] . " 404 Not Found");
-                    echo '404';
+                    throw new \Exception('404 Not Found，页面被外星人抓走啦~');
                 };
             } else {
                 if (is_string(self::$error_callback)) {

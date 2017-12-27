@@ -32,9 +32,8 @@
         border-top: 1px #dadcdd solid;
     }
     .body .item p {
-        margin: 5px;
+        margin: 2px 5px;
         color: #2e3437;
-        font-family: Consolas;
     }
     .body .item p:hover {
         text-decoration: underline;
@@ -45,7 +44,7 @@
         color: #555;
     }
     .footer {
-        margin-top: 30px;
+        margin-top: 10px;
         border-top: 1px #dadcdd solid;
         color: #636b6f;
     }
@@ -72,7 +71,7 @@
     </div>
     <?php else: ?>
         <div class="main">
-            <h1>有错误发生!</h1>
+            <h1><?php echo $e->getMessage(); ?></h1>
             <h2>Internal Server Error</h2>
         </div>
     <?php endif; ?>
