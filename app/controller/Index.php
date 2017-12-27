@@ -25,7 +25,9 @@ class Index
 
         //throw new \Exception('自定义异常');
 
-        exit(dump(Config::get('post.666')));
+        //exit(dump(Config::get()));
+
+        exit(dump(Config::get('cache')));
 
     }
 }

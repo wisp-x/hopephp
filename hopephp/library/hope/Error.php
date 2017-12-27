@@ -21,7 +21,7 @@ class Error extends \Exception
      */
     public static function register()
     {
-        error_reporting(0);
+        error_reporting(E_ALL);
         set_error_handler([__CLASS__, 'error']);
         set_exception_handler([__CLASS__, 'exception']);
         register_shutdown_function([__CLASS__, 'shutdown']);

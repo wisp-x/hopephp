@@ -21,7 +21,7 @@ class Config
 
     /**
      * 初始化系统配置
-     * @return mixed
+     * @return array
      */
     public static function init()
     {
@@ -40,21 +40,52 @@ class Config
     }
 
     /**
+     * 判断配置是否设置
+     * @param $name
+     * @return bool
+     */
+    public static function has($name)
+    {
+        if (!strpos($name, '.')) {
+            return isset(self::$config[strtolower($name)]);
+        }
+
+        $name = explode('.', $name, 2);
+        return isset(self::$config[strtolower($name[0])][$name[1]]);
+    }
+
+    /**
+     * 设置配置
+     * @param $name 配置项
+     * @param string|array $value 配置值
+     * @return string
+     */
+    public static function set($name, $value = '')
+    {
+        self::$config[$name] = $value;
+    }
+
+    /**
      * 获取配置数据
-     * @param string $term
+     * @param string $name 配置名，支持二级配置（. 分割）
      * @return array
      */
-    public static function get($term = '')
+    public static function get($name = '')
     {
-        if(!empty($term)) {
-            if(strpos($term, '.') !== false) {
-                $data = explode('.', $term);
-                return self::$config[$data[0]];
-            } else {
+        if(!empty($name)) {
+            if(strpos($name, '.') !== false) {
 
+                $data = explode('.', $name, 2);
+                $data[0] = strtolower($data[0]);
+
+                if(isset($data[1]) && $data[1]) {
+                    return isset(self::$config[$data[0]][1]) ? self::$config[$data[0]][1] : null;
+                }
+                return isset(self::$config[$data[0]]) ? self::$config[$data[0]] : null;
+            } else {
+                return isset(self::$config[$name]) ? self::$config[$name] : null;
             }
         }
-        // 返回所有配置
         return self::$config;
     }
 
