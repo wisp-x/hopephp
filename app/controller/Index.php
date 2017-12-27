@@ -21,6 +21,7 @@ class Index extends Controller
     public function index()
     {
 
+
         /*$article = Article::get(1);
         dump($article);*/
 

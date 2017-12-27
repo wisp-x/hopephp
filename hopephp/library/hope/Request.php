@@ -14,21 +14,7 @@ namespace hope;
 
 class Request
 {
-    protected static $instance;
-
-    /**
-     * 初始化
-     * @access public
-     * @param array $options 参数
-     * @return \hope\Request
-     */
-    public static function instance($options = [])
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new static($options);
-        }
-        return self::$instance;
-    }
+    protected $server;
 
     /**
      * 获取客户端IP地址
