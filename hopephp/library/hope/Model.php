@@ -12,22 +12,17 @@
 
 namespace hope;
 
-use Illuminate\Database\Capsule\Manager;
+use think\Db;
 
-class Model extends \Illuminate\Database\Eloquent\Model
+class Model extends \think\Model
 {
     /**
-     * 初始化Eloquent
+     * 初始化Think ORM
      * Model constructor.
-     * @param array $attributes
      */
-    public function __construct(array $attributes = [])
+    public function __construct()
     {
-        $capsule = new Manager();
-
-        $capsule->addConnection(require APP_PATH . 'database' . EXT);
-
-        $capsule->bootEloquent();
-        parent::__construct($attributes);
+        Db::setConfig(require APP_PATH . 'database' . EXT);
+        parent::__construct();
     }
 }

@@ -18,10 +18,10 @@ class Index
 {
     public function index()
     {
-        /*$article = Article::find(1);
-        dump($article->title);*/
+        $article = Article::get(1);
+        dump($article);
 
-        throw new \Exception('自定义异常');
+        //throw new \Exception('自定义异常');
 
     }
 }
