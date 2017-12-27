@@ -76,7 +76,7 @@
         </div>
     <?php endif; ?>
     <div class="footer">
-        <p>— HopePHP 1.0</p>
+        <p>— HopePHP <?php echo HOPE_VERSION; ?></p>
     </div>
 </div>
 </body>
