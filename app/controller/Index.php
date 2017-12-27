@@ -13,16 +13,19 @@
 namespace app\controller;
 
 use app\model\Article;
+use hope\Config;
 
 class Index
 {
     public function index()
     {
 
-        $article = Article::get(1);
-        dump($article);
+        /*$article = Article::get(1);
+        dump($article);*/
 
         //throw new \Exception('自定义异常');
+
+        exit(dump(Config::get('post.666')));
 
     }
 }

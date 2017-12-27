@@ -41,13 +41,18 @@ class Config
 
     /**
      * 获取配置数据
-     * @param string $data
+     * @param string $term
      * @return array
      */
-    public static function get($data = '')
+    public static function get($term = '')
     {
-        if(!empty($data)) {
-            // TODO 解析配置
+        if(!empty($term)) {
+            if(strpos($term, '.') !== false) {
+                $data = explode('.', $term);
+                return self::$config[$data[0]];
+            } else {
+
+            }
         }
         // 返回所有配置
         return self::$config;

@@ -14,7 +14,7 @@
 
 namespace hope;
 
-class Error
+class Error extends \Exception
 {
     /**
      * 注册异常处理
