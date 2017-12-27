@@ -18,6 +18,7 @@ class Index
 {
     public function index()
     {
+
         $article = Article::get(1);
         dump($article);
 

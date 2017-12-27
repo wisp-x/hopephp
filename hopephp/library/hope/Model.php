@@ -23,6 +23,7 @@ class Model extends \think\Model
     public function __construct()
     {
         Db::setConfig(require APP_PATH . 'database' . EXT);
+
         parent::__construct();
     }
 }
