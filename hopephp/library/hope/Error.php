@@ -77,19 +77,16 @@ class Error
     public static function exception($e)
     {
         // TODO 判断是否是调试模式
-        // 设置错误数据
-        $data = [
-            'tables'    => [
-                'GET Data'              => $_GET,
-                'POST Data'             => $_POST,
-                'Files'                 => $_FILES,
-                'Cookies'               => $_COOKIE,
-                'Session'               => isset($_SESSION) ? $_SESSION : [],
-                'Server/Request Data'   => $_SERVER,
-                'Environment Variables' => $_ENV,
-            ]
+        // 设置额外数据
+        $e->tables = [
+            'GET Data'              => $_GET,
+            'POST Data'             => $_POST,
+            'Files'                 => $_FILES,
+            'Cookies'               => $_COOKIE,
+            'Session'               => isset($_SESSION) ? $_SESSION : [],
+            'Server/Request Data'   => $_SERVER,
+            'Environment Variables' => $_ENV,
         ];
-        $e->error = $data;
         require HOPE_PATH . 'temp/exception' . EXT;
     }
 }

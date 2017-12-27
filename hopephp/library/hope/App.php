@@ -14,6 +14,9 @@ namespace hope;
 
 class App
 {
+    // 应用Debug
+    public static $debug;
+
     /**
      * 执行应用，返回全局配置
      * @return array
@@ -24,6 +27,9 @@ class App
 
         // 设置系统时区
         date_default_timezone_set($config['default_timezone']);
+
+        // 是否开启debug
+        $config['debug'] = self::$debug;
 
         // 初始化路由
         Route::init();

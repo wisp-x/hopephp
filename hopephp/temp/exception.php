@@ -35,7 +35,7 @@
         cursor: pointer;
     }
     .footer {
-        margin-top: 15px;
+        margin-top: 30px;
         color: #636b6f;
     }
 </style>
