@@ -7,12 +7,18 @@
     <title>出现异常</title>
 </head>
 <style>
+    .body {
+        font-family: 'Droid Sans', sans-serif;
+        font-size: 10pt;
+        color: #555;
+        line-height: 25px;
+    }
     .container {
         padding: 20px;
         margin: 50px auto;
         max-width: 80%;
-        border: 1px solid #ddd;
-        box-shadow: 0 1px 1px rgba(0,0,0,.03);
+        /*border: 1px solid #ddd;
+        box-shadow: 0 1px 1px rgba(0,0,0,.03);*/
         background: #fff;
         word-wrap: break-word;
     }
@@ -34,13 +40,19 @@
         text-decoration: underline;
         cursor: pointer;
     }
+    .main {
+        overflow: hidden;
+        color: #555;
+    }
     .footer {
         margin-top: 30px;
+        border-top: 1px #dadcdd solid;
         color: #636b6f;
     }
 </style>
 <body>
 <div class="container">
+    <?php if(\hope\App::$debug): ?>
     <div class="header"><?php echo $e->getMessage(); ?></div>
     <div class="body">
         <div class="item">
@@ -58,6 +70,12 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <?php else: ?>
+        <div class="main">
+            <h1>有错误发生!</h1>
+            <h2>Internal Server Error</h2>
+        </div>
+    <?php endif; ?>
     <div class="footer">
         <p>— HopePHP 1.0</p>
     </div>

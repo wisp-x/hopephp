@@ -29,7 +29,7 @@ class App
         date_default_timezone_set($config['default_timezone']);
 
         // 是否开启debug
-        $config['debug'] = self::$debug;
+        self::$debug = $config['app_debug'];
 
         // 初始化路由
         Route::init();

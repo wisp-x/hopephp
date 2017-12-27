@@ -12,4 +12,6 @@
 
 // [ 路由配置 Link: https://github.com/NoahBuscher/Macaw ]
 
-\hope\Route::get('', 'app\controller\index@index');
+use hope\Route;
+
+Route::get('', 'app\controller\index@index');

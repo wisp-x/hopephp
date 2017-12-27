@@ -76,7 +76,6 @@ class Error extends \Exception
      */
     public static function exception($e)
     {
-        // TODO 判断是否是调试模式
         // 设置额外数据
         $e->tables = [
             'GET Data'              => $_GET,
