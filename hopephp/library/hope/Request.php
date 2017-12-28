@@ -18,7 +18,11 @@ class Request
      * instance对象实例
      * @var
      */
-    public static $instance;
+    protected static $instance;
+
+    protected $server;
+
+    protected $method;
 
     /**
      * 初始化
@@ -32,6 +36,18 @@ class Request
             self::$instance = new static($options);
         }
         return self::$instance;
+    }
+
+    /**
+     * 初始化Request
+     * Request constructor.
+     */
+    public function __construct()
+    {
+        if(!$this->server) $this->server = $_SERVER;
+        if(!$this->method) {
+            $this->method = isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']);
+        }
     }
 
     /**
@@ -95,7 +111,16 @@ class Request
      */
     public function isCli()
     {
-        return (PHP_SAPI === 'cli' OR defined('STDIN'));
+        return PHP_SAPI == 'cli';
+    }
+
+    /**
+     * 是否Cgi
+     * @return bool
+     */
+    public function isCgi()
+    {
+        return strpos(PHP_SAPI, 'cgi') === 0;
     }
 
     /**
@@ -104,7 +129,7 @@ class Request
      */
     public function isAjax()
     {
-        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUESTED_WITH']) == 'XMLHTTPREQUEST';
+        return isset($this->server['HTTP_X_REQUESTED_WITH']) && strtoupper($this->server['HTTP_X_REQUESTED_WITH']) == 'XMLHTTPREQUEST';
     }
 
     /**
@@ -113,7 +138,7 @@ class Request
      */
     public function isPost()
     {
-        return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'POST';
+        return $this->method == 'POST';
     }
 
     /**
@@ -122,6 +147,55 @@ class Request
      */
     public function isGet()
     {
-        return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'GET';
+        return $this->method == 'GET';
+    }
+
+    /**
+     * 是否Head请求
+     * @return bool
+     */
+    public function isHead()
+    {
+        return $this->method == 'HEAD';
+    }
+
+    /**
+     * 是否Patch请求
+     * @return bool
+     */
+    public function isPatch()
+    {
+        return $this->method == 'PATCH';
+    }
+
+    /**
+     * 是Options请求
+     * @return bool
+     */
+    public function isOptions()
+    {
+        return $this->method == 'OPTIONS';
+    }
+
+    /**
+     * 是否Ssl
+     * @return bool
+     */
+    public function isSsl() {
+        if (isset($this->server['HTTPS']) && ('1' == $this->server['HTTPS'] || 'on' == strtolower($this->server['HTTPS']))) {
+            return true;
+        } elseif (isset($this->server['SERVER_PORT']) && ('443' == $this->server['SERVER_PORT'] )) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取当前域名
+     * @return string
+     */
+    public function domain()
+    {
+        return ($this->isSsl() ? 'https://' : 'http://') . (isset($this->server['SERVER_NAME']) ? $this->server['SERVER_NAME'] : $this->server['SERVER_HOST']);
     }
 }
