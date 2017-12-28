@@ -48,16 +48,21 @@ if (!function_exists('debug')) {
 }
 
 if (!function_exists('config')) {
+    /**
+     * 获取配置
+     * @param string $name 配置项
+     * @param string $value 配置值
+     * @return array|bool|string
+     */
     function config($name = '', $value = '')
     {
 
-        if(strpos($name, '?')) {
-            $name = ltrim($name, '?');
-            return Config::has($name);
+        if(false !== strpos($name, '?')) {
+            return Config::has(ltrim($name, '?'));
         }
 
         if(!empty($value)) {
-            Config::set($name, $value);
+            return Config::set($name, $value);
         }
 
         return Config::get($name);

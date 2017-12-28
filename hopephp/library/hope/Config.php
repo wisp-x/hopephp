@@ -58,11 +58,11 @@ class Config
      * 设置配置
      * @param $name 配置项
      * @param string|array $value 配置值
-     * @return string
+     * @return integer
      */
     public static function set($name, $value = '')
     {
-        self::$config[strtolower($name)] = $value;
+        return self::$config[strtolower($name)] = $value;
     }
 
     /**
@@ -73,7 +73,7 @@ class Config
     public static function get($name = '')
     {
         if(!empty($name)) {
-            if(strpos($name, '.') !== false) {
+            if(false !== strpos($name, '.')) {
 
                 $data = explode('.', $name, 2);
                 $data[0] = strtolower($data[0]);
