@@ -25,15 +25,21 @@ namespace hope;
 class Route
 {
     public static $halts        = false;
+
     public static $routes       = array();
+
     public static $methods      = array();
+
     public static $callbacks    = array();
+
     public static $maps         = array();
+
     public static $patterns     = array(
         ':any' => '[^/]+',
         ':num' => '[0-9]+',
         ':all' => '.*'
     );
+
     public static $error_callback;
 
     /**
@@ -64,6 +70,7 @@ class Route
     public static function init()
     {
         if (is_file(APP_PATH . 'route' . EXT)) {
+
             require APP_PATH . 'route' . EXT;
         }
         self::dispatch();

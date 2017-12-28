@@ -98,7 +98,7 @@ class View
             $content = $this->replace(file_get_contents($file));
             $content = "<?php defined('HOPE') or die('Forbidden access'); ?>\r\n" . $content;
             if (false === file_put_contents($name, $content)) {
-                throw new \Exception("写入缓存失败：{$name}");
+                throw new \Exception("模板编译失败：{$name}");
             }
         }
     }
@@ -110,9 +110,22 @@ class View
      */
     public function fetch($template)
     {
+        $backtrace = debug_backtrace();
+        array_shift($backtrace);
 
-        // 拼装模板地址
-        $file = "{$this->config['view_path']}{$template}.{$this->config['view_suffix']}";
+        // 该数组依次对应：app、模块名、控制器名、方法名
+        $array = explode('\\', str_replace('controller', 'view', strtolower($backtrace[1]['class'])));
+
+        $file = ROOT_PATH . DS;
+
+        if(is_null($template)) {
+            foreach ($array as $value) {
+                $file .= $value . DS;
+            }
+            $file .= strtolower($backtrace[1]['function'] . '.' . $this->config['view_suffix']);
+        } else {
+            $file = APP_PATH . "{$array[1]}/{$this->config['view_path']}/{$template}.{$this->config['view_suffix']}";
+        }
 
         if (!file_exists($file)) {
             throw new \Exception("模板文件不存在：{$file}");
