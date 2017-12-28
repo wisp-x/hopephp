@@ -129,7 +129,7 @@ class Request
      */
     public function isAjax()
     {
-        return isset($this->server['HTTP_X_REQUESTED_WITH']) && strtoupper($this->server['HTTP_X_REQUESTED_WITH']) == 'XMLHTTPREQUEST';
+        return $this->server('HTTP_X_REQUESTED_WITH') && strtoupper($this->server('HTTP_X_REQUESTED_WITH')) == 'XMLHTTPREQUEST';
     }
 
     /**
@@ -200,12 +200,21 @@ class Request
      * @return bool
      */
     public function isSsl() {
-        if (isset($this->server['HTTPS']) && ('1' == $this->server['HTTPS'] || 'on' == strtolower($this->server['HTTPS']))) {
+        if ($this->server('HTTPS') && ('1' == $this->server('HTTPS') || 'on' == strtolower($this->server('HTTPS')))) {
             return true;
-        } elseif (isset($this->server['SERVER_PORT']) && ('443' == $this->server['SERVER_PORT'] )) {
+        } elseif ($this->server('SERVER_PORT') && ('443' == $this->server('SERVER_PORT'))) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 当前URL地址中的scheme参数
+     * @return string
+     */
+    public function scheme()
+    {
+        return $this->isSsl() ? 'https' : 'http';
     }
 
     /**
@@ -214,7 +223,7 @@ class Request
      */
     public function domain()
     {
-        return ($this->isSsl() ? 'https://' : 'http://') . (isset($this->server['SERVER_NAME']) ? $this->server['SERVER_NAME'] : $this->server['SERVER_HOST']);
+        return $this->scheme() . '://' . ($this->server('SERVER_NAME') ? $this->server('SERVER_NAME') : $this->server('SERVER_HOST'));
     }
 
     /**
@@ -224,6 +233,26 @@ class Request
      */
     public function time($float = false)
     {
-        return $float ? $this->server['REQUEST_TIME_FLOAT'] : $this->server['REQUEST_TIME'];
+        return $float ? $this->server('REQUEST_TIME_FLOAT') : $this->server('REQUEST_TIME');
     }
+
+    /**
+     * 当前请求URL地址中的query参数
+     * @return string
+     */
+    public function query()
+    {
+        return $this->server('QUERY_STRING');
+    }
+
+    /**
+     * 获取系统Server数据
+     * @param string $name 为空获取所有
+     * @return null
+     */
+    public function server($name = '')
+    {
+        return empty($name) ? $this->server : (isset($this->server[$name]) ? $this->server[$name] : null);
+    }
+
 }

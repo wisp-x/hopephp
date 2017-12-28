@@ -15,6 +15,7 @@ namespace app\controller;
 use app\model\Article;
 use hope\Config;
 use hope\Controller;
+use hope\Request;
 
 class Index extends Controller
 {
@@ -25,6 +26,7 @@ class Index extends Controller
 
         //throw new \Exception('自定义异常');
 
+        dump(Request::instance()->server());
         exit(dump(\config('?cache')));
 
     }
