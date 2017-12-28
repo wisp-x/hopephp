@@ -13,6 +13,7 @@
 // [ 助手函数 ]
 
 use hope\Debug;
+use hope\Config;
 
 if (!function_exists('dump')) {
     /**
@@ -52,14 +53,14 @@ if (!function_exists('config')) {
 
         if(strpos($name, '?')) {
             $name = ltrim($name, '?');
-            return \hope\Config::has($name);
+            return Config::has($name);
         }
 
         if(!empty($value)) {
-            \hope\Config::set($name, $value);
+            Config::set($name, $value);
         }
 
-        return \hope\Config::get($name);
+        return Config::get($name);
 
     }
 }
