@@ -26,7 +26,6 @@ class Index extends Controller
 
         //throw new \Exception('自定义异常');
 
-        dump(Request::instance()->server());
         exit(dump(\config('?cache')));
 
     }

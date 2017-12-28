@@ -14,5 +14,29 @@ namespace hope;
 
 class Cookie
 {
+    protected static $init;
 
+    public static function set()
+    {
+    }
+
+    public static function get()
+    {
+    }
+
+    public static function has()
+    {
+    }
+
+    public static function forever()
+    {
+    }
+
+    public static function delete()
+    {
+    }
+
+    public static function clear()
+    {
+    }
 }
