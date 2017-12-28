@@ -131,8 +131,7 @@ class File
     }
 
     /**
-     *
-     *
+     * 复制文件
      * @param string $source 要复制的目录地址
      * @param string $path 目标目录地址
      * @return null
@@ -155,7 +154,8 @@ class File
     /**
      * 创建文件
      *
-     * @param unknown_type $file
+     * @param unknown_type $file 文件名
+     * @param string $content 文件内容
      */
     public static function createFile($file, $content = '')
     {
@@ -169,7 +169,7 @@ class File
 
     /**
      * 获取文件后缀名
-     * @param $file
+     * @param $file 文件名
      * @return mixed
      */
     public static function getExtension($file)

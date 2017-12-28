@@ -16,6 +16,7 @@ use app\model\Article;
 use hope\Config;
 use hope\Controller;
 use hope\Request;
+use hope\View;
 
 class Index extends Controller
 {
@@ -26,7 +27,10 @@ class Index extends Controller
 
         //throw new \Exception('自定义异常');
 
-        exit(dump(\config('?cache')));
+        //exit(dump(\config('?cache')));
+
+        View::instance()->assign('hope', 'HopePHP');
+        View::instance()->fetch();
 
     }
 }

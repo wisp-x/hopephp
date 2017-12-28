@@ -16,6 +16,8 @@ namespace hope;
 
 // 常量配置
 
+defined('HOPE') or define('HOPE', 'HOPE');
+
 // 框架版本
 defined('HOPE_VERSION') or define('HOPE_VERSION', '1.0');
 
@@ -45,6 +47,12 @@ defined('LIB_PATH') or define('LIB_PATH', HOPE_PATH . 'library' . DS);
 
 // 缓存目录
 defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH . 'runtime' . DS);
+
+// 应用缓存
+defined('TEMP_PATH') or define('TEMP_PATH', RUNTIME_PATH . 'temp' . DS);
+
+// 日志
+defined('LOH_PATH') or define('LOG_PATH', RUNTIME_PATH . 'log' . DS);
 
 // 配置目录
 defined('CONF_PATH') or define('CONF_PATH', ROOT_PATH . 'config' . DS);

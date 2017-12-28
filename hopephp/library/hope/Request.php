@@ -15,7 +15,7 @@ namespace hope;
 class Request
 {
     /**
-     * instance对象实例
+     * Request instance对象实例
      * @var
      */
     protected static $instance;
