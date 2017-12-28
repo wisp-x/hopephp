@@ -108,9 +108,11 @@ class View
      * @param string $template
      * @throws \Exception
      */
-    public function fetch($template = 'index.html')
+    public function fetch($template)
     {
-        $file = $this->config['view_path'] . 'index/' . $template;
+
+        // 拼装模板地址
+        $file = "{$this->config['view_path']}{$template}.{$this->config['view_suffix']}";
 
         if (!file_exists($file)) {
             throw new \Exception("模板文件不存在：{$file}");

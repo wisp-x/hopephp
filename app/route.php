@@ -14,4 +14,4 @@
 
 use hope\Route;
 
-Route::get('', 'app\controller\index@index');
+Route::get('', 'app\index\controller\index@index');

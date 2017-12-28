@@ -186,7 +186,7 @@ class Route
             if (!self::$error_callback) {
                 self::$error_callback = function () {
                     header($_SERVER['SERVER_PROTOCOL'] . " 404 Not Found");
-                    throw new \Exception('404 Not Found，页面被外星人抓走啦~');
+                    throw new \Exception(Config::get('error_message'));
                 };
             } else {
                 if (is_string(self::$error_callback)) {
