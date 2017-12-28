@@ -246,6 +246,59 @@ class Request
     }
 
     /**
+     * 当前请求的host
+     * @return string
+     */
+    public function host()
+    {
+        if (isset($_SERVER['HTTP_X_REAL_HOST'])) {
+            return $_SERVER['HTTP_X_REAL_HOST'];
+        }
+        return $this->server('HTTP_HOST');
+    }
+    /**
+     * 当前请求URL地址中的port参数
+     * @return integer
+     */
+    public function port()
+    {
+        return $this->server('SERVER_PORT');
+    }
+    /**
+     * 当前请求 SERVER_PROTOCOL
+     * @return integer
+     */
+    public function protocol()
+    {
+        return $this->server('SERVER_PROTOCOL');
+    }
+    /**
+     * 当前请求 REMOTE_PORT
+     * @return integer
+     */
+    public function remotePort()
+    {
+        return $this->server('REMOTE_PORT');
+    }
+    /**
+     * 当前请求 HTTP_CONTENT_TYPE
+     * @return string
+     */
+    public function contentType()
+    {
+        $contentType = $this->server('CONTENT_TYPE');
+        if ($contentType) {
+            if (strpos($contentType, ';')) {
+                list($type) = explode(';', $contentType);
+            } else {
+                $type = $contentType;
+            }
+            return trim($type);
+        }
+        return '';
+    }
+
+    /**
      * 获取系统Server数据
      * @param string $name 为空获取所有
      * @return null
