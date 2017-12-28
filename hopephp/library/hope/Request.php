@@ -151,6 +151,24 @@ class Request
     }
 
     /**
+     * 是否为Delete请求
+     * @return bool
+     */
+    public function isDelete()
+    {
+        return $this->method == 'DELETE';
+    }
+
+    /**
+     * 是否为Put请求
+     * @return bool
+     */
+    public function isPut()
+    {
+        return $this->method == 'PUT';
+    }
+
+    /**
      * 是否Head请求
      * @return bool
      */
@@ -197,5 +215,15 @@ class Request
     public function domain()
     {
         return ($this->isSsl() ? 'https://' : 'http://') . (isset($this->server['SERVER_NAME']) ? $this->server['SERVER_NAME'] : $this->server['SERVER_HOST']);
+    }
+
+    /**
+     * 获取当前请求的时间
+     * @param bool $float 是否使用浮点类型
+     * @return integer|float
+     */
+    public function time($float = false)
+    {
+        return $float ? $this->server['REQUEST_TIME_FLOAT'] : $this->server['REQUEST_TIME'];
     }
 }
