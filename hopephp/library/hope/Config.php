@@ -29,7 +29,7 @@ class Config
         foreach ($files as $item => $file) {
             if(is_file(CONF_PATH . $file)) {
                 $conf = self::load(CONF_PATH . $file);
-                if($item === 0) {
+                if(0 === $item) {
                     self::$config = $conf;
                 } else {
                     self::$config[basename($file, EXT)] = $conf;
@@ -62,7 +62,7 @@ class Config
      */
     public static function set($name, $value = '')
     {
-        self::$config[$name] = $value;
+        self::$config[strtolower($name)] = $value;
     }
 
     /**

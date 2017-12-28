@@ -45,3 +45,21 @@ if (!function_exists('debug')) {
         }
     }
 }
+
+if (!function_exists('config')) {
+    function config($name = '', $value = '')
+    {
+
+        if(strpos($name, '?')) {
+            $name = ltrim($name, '?');
+            return \hope\Config::has($name);
+        }
+
+        if(!empty($value)) {
+            \hope\Config::set($name, $value);
+        }
+
+        return \hope\Config::get($name);
+
+    }
+}

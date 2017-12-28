@@ -14,8 +14,6 @@ namespace hope;
 
 class Request
 {
-    protected $server;
-
     /**
      * 获取客户端IP地址
      * @param integer   $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
@@ -69,5 +67,41 @@ class Request
         } else {
             return false;
         }
+    }
+
+    /**
+     * 是否命令行模式
+     * @return bool
+     */
+    public static function isCli()
+    {
+        return (PHP_SAPI === 'cli' OR defined('STDIN'));
+    }
+
+    /**
+     * 是否Ajax请求
+     * @return bool
+     */
+    public static function isAjax()
+    {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUESTED_WITH']) == 'XMLHTTPREQUEST';
+    }
+
+    /**
+     * 是否Post请求
+     * @return bool
+     */
+    public static function isPost()
+    {
+        return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'POST';
+    }
+
+    /**
+     * 是否Get请求
+     * @return bool
+     */
+    public static function isGet()
+    {
+        return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'GET';
     }
 }
