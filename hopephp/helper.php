@@ -50,8 +50,8 @@ if (!function_exists('debug')) {
 if (!function_exists('config')) {
     /**
      * 获取配置
-     * @param string $name 配置项
-     * @param string $value 配置值
+     * @param string            $name 配置项，为空获取所有配置
+     * @param string            $value 配置值，为空根据name获取配置，否则为设置配置
      * @return array|bool|string
      */
     function config($name = '', $value = '')
