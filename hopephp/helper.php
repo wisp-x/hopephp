@@ -14,6 +14,7 @@
 
 use hope\Debug;
 use hope\Config;
+use hope\Request;
 
 if (!function_exists('dump')) {
     /**
@@ -67,5 +68,16 @@ if (!function_exists('config')) {
 
         return Config::get($name);
 
+    }
+}
+
+if (!function_exists('request')) {
+    /**
+     * 获取当前Request对象实例
+     * @return Request
+     */
+    function request()
+    {
+        return Request::instance();
     }
 }

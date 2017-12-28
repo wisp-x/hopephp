@@ -15,6 +15,7 @@ namespace app\controller;
 use app\model\Article;
 use hope\Config;
 use hope\Controller;
+use hope\Request;
 
 class Index extends Controller
 {

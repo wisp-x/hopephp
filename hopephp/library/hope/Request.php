@@ -15,12 +15,32 @@ namespace hope;
 class Request
 {
     /**
+     * instance对象实例
+     * @var
+     */
+    public static $instance;
+
+    /**
+     * 初始化
+     * @access public
+     * @param array $options 参数
+     * @return \hope\Request
+     */
+    public static function instance($options = [])
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new static($options);
+        }
+        return self::$instance;
+    }
+
+    /**
      * 获取客户端IP地址
      * @param integer   $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
      * @param boolean   $adv 是否进行高级模式获取（有可能被伪装）
      * @return mixed
      */
-    public static function ip($type = 0, $adv = true)
+    public function ip($type = 0, $adv = true)
     {
         $type      = $type ? 1 : 0;
         static $ip = null;
@@ -54,7 +74,7 @@ class Request
      * @access public
      * @return bool
      */
-    public static function isMobile()
+    public function isMobile()
     {
         if (isset($_SERVER['HTTP_VIA']) && stristr($_SERVER['HTTP_VIA'], "wap")) {
             return true;
@@ -73,7 +93,7 @@ class Request
      * 是否命令行模式
      * @return bool
      */
-    public static function isCli()
+    public function isCli()
     {
         return (PHP_SAPI === 'cli' OR defined('STDIN'));
     }
@@ -82,7 +102,7 @@ class Request
      * 是否Ajax请求
      * @return bool
      */
-    public static function isAjax()
+    public function isAjax()
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUESTED_WITH']) == 'XMLHTTPREQUEST';
     }
@@ -91,7 +111,7 @@ class Request
      * 是否Post请求
      * @return bool
      */
-    public static function isPost()
+    public function isPost()
     {
         return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'POST';
     }
@@ -100,7 +120,7 @@ class Request
      * 是否Get请求
      * @return bool
      */
-    public static function isGet()
+    public function isGet()
     {
         return isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) == 'GET';
     }
