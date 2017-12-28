@@ -17,30 +17,33 @@ class App
     // 应用Debug
     public static $debug;
 
+    // 全局数据
+    public static $config;
+
     /**
      * 运行应用
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public static function run()
     {
         try {
 
-            $config = self::init();
+            self::init();
 
             // 设置系统时区
-            date_default_timezone_set($config['default_timezone']);
+            date_default_timezone_set(self::$config['default_timezone']);
 
             // 是否开启debug
-            self::$debug = $config['app_debug'];
+            self::$debug = self::$config['app_debug'];
 
             // 初始化路由
             Route::init();
 
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
         }
-        return $config;
+        return self::$config;
     }
 
     /**
@@ -60,7 +63,7 @@ class App
         include HOPE_PATH . 'helper' . EXT;
 
         // 初始化系统配置
-        $config = Config::init();
+        self::$config = Config::init();
 
         $path = APP_PATH . $module;
 
@@ -74,6 +77,5 @@ class App
             require $path . 'config' . EXT;
         }
 
-        return $config;
     }
 }
