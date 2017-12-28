@@ -14,10 +14,16 @@ namespace hope;
 
 class App
 {
-    // 应用Debug
+    /**
+     * 应用Debug
+     * @var
+     */
     public static $debug;
 
-    // 全局数据
+    /**
+     * 全局配置
+     * @var
+     */
     public static $config;
 
     /**
@@ -49,7 +55,6 @@ class App
     /**
      * 初始化应用
      * @param string $module
-     * @return array
      */
     public static function init($module = '')
     {
