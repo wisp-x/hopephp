@@ -16,7 +16,6 @@ use app\index\model\Article;
 use hope\Config;
 use hope\Controller;
 use hope\Request;
-use hope\View;
 
 class Index extends Controller
 {

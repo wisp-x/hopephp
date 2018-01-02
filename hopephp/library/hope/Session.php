@@ -33,36 +33,95 @@ class Session
         }
     }
 
-    public static function set()
+    /**
+     * 设置Session
+     * @param $name string|array Session值|['session名' => 'session值']
+     * @param string $value Session值
+     */
+    public static function set($name, $value = '')
     {
+        empty(self::$init) && self::init();
+
+        if (is_string($name)) {
+            $_SESSION[$name] = $value;
+        }
+
+        if (is_array($name)) {
+            foreach ($name as $item => $val) {
+                $_SESSION[$item] = $val;
+            }
+        }
     }
 
-    public static function get()
+    /**
+     * 获取Session
+     * @param string $name 为空获取所有Session
+     * @return bool|array|string
+     */
+    public static function get($name = '')
     {
+        empty(self::$init) && self::init();
+
+        return empty($name) ? $_SESSION : (isset($_SESSION[$name]) ? $_SESSION[$name] : false);
     }
 
-    public static function has()
+    /**
+     * 判断Session是否设置
+     * @param $name Session名
+     * @return bool
+     */
+    public static function has($name)
     {
+        empty(self::$init) && self::init();
+
+        return isset($_SESSION[$name]) ? true : false;
     }
 
-    public static function pull()
+    /**
+     * 取出Session值并删除
+     * @param $name
+     * @return array|bool|string
+     */
+    public static function pull($name)
     {
+        empty(self::$init) && self::init();
+
+        $session = self::get($name);
+        if ($session) {
+            self::delete($name);
+            return $session;
+        }
+        return false;
     }
 
-    public static function flash()
+    /**
+     * 删除Session
+     * @param $name Session名
+     * @return bool
+     */
+    public static function delete($name)
     {
+        empty(self::$init) && self::init();
+
+        $session = self::get($name);
+        if (is_string($session)) {
+            unset($_SESSION[$name]);
+        }
+
+        if (is_array($session)) {
+            $_SESSION[$name] = [];
+        }
+        return true;
     }
 
-    public static function flush()
-    {
-    }
-
-    public static function delete()
-    {
-    }
-
+    /**
+     * 清空Session
+     */
     public static function clear()
     {
+        empty(self::$init) && self::init();
+
+        $_SESSION = [];
     }
 
     /**
