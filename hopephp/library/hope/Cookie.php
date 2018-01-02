@@ -134,6 +134,7 @@ class Cookie
         !isset(self::$init) && self::init();
 
         foreach ($_COOKIE as $key => $val) {
+
             setcookie(
                 $key, '', $_SERVER['REQUEST_TIME'] - 3600, self::$config['path'],
                 self::$config['domain'], self::$config['secure']

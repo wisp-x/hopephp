@@ -44,21 +44,21 @@ class Request
      */
     public function __construct()
     {
-        if(!$this->server) $this->server = $_SERVER;
-        if(!$this->method) {
+        if (!$this->server) $this->server = $_SERVER;
+        if (!$this->method) {
             $this->method = isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']);
         }
     }
 
     /**
      * 获取客户端IP地址
-     * @param integer   $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
-     * @param boolean   $adv 是否进行高级模式获取（有可能被伪装）
+     * @param integer $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
+     * @param boolean $adv 是否进行高级模式获取（有可能被伪装）
      * @return mixed
      */
     public function ip($type = 0, $adv = true)
     {
-        $type      = $type ? 1 : 0;
+        $type = $type ? 1 : 0;
         static $ip = null;
         if (null !== $ip) {
             return $ip[$type];
@@ -81,7 +81,7 @@ class Request
         }
         // IP地址合法验证
         $long = sprintf("%u", ip2long($ip));
-        $ip   = $long ? [$ip, $long] : ['0.0.0.0', 0];
+        $ip = $long ? [$ip, $long] : ['0.0.0.0', 0];
         return $ip[$type];
     }
 
@@ -199,7 +199,8 @@ class Request
      * 是否Ssl
      * @return bool
      */
-    public function isSsl() {
+    public function isSsl()
+    {
         if ($this->server('HTTPS') && ('1' == $this->server('HTTPS') || 'on' == strtolower($this->server('HTTPS')))) {
             return true;
         } elseif ($this->server('SERVER_PORT') && ('443' == $this->server('SERVER_PORT'))) {
@@ -256,6 +257,7 @@ class Request
         }
         return $this->server('HTTP_HOST');
     }
+
     /**
      * 当前请求URL地址中的port参数
      * @return integer
@@ -264,6 +266,7 @@ class Request
     {
         return $this->server('SERVER_PORT');
     }
+
     /**
      * 当前请求 SERVER_PROTOCOL
      * @return integer
@@ -272,6 +275,7 @@ class Request
     {
         return $this->server('SERVER_PROTOCOL');
     }
+
     /**
      * 当前请求 REMOTE_PORT
      * @return integer
@@ -280,6 +284,7 @@ class Request
     {
         return $this->server('REMOTE_PORT');
     }
+
     /**
      * 当前请求 HTTP_CONTENT_TYPE
      * @return string

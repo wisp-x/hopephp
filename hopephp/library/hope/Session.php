@@ -25,8 +25,8 @@ class Session
      */
     public static function init()
     {
-        if(is_null(self::$init)) {
-            if(session_status() !== PHP_SESSION_ACTIVE) {
+        if (is_null(self::$init)) {
+            if (session_status() !== PHP_SESSION_ACTIVE) {
                 session_start();
             }
             self::$init = true;

@@ -48,6 +48,10 @@ class Log
         self::$log = [];
     }
 
+    /**
+     * 保存日志信息
+     * @return bool
+     */
     public static function save()
     {
         $path = RUNTIME_PATH . Config::get('log.path') . DS;
