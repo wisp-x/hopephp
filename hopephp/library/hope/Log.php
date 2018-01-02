@@ -64,7 +64,7 @@ class Log
 
         $runtime    = round(microtime(true) - HOPE_START_TIME, 10);
         $reqs       = $runtime > 0 ? number_format(1 / $runtime, 2) : '∞';
-        $time_str   = ' [运行时间：' . number_format($runtime, 6) . 's][吞吐率：' . $reqs . 'req/s]';
+        $time_str = ' [运行时间：' . number_format($runtime, 6) . 's] [吞吐率：' . $reqs . 'req/s]';
         $memory_use = number_format((memory_get_usage() - HOPE_START_MEM) / 1024, 2);
         $memory_str = ' [内存消耗：' . $memory_use . 'kb]';
         $file_load  = ' [文件加载：' . count(get_included_files()) . ']';
