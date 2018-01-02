@@ -22,10 +22,10 @@ defined('HOPE') or define('HOPE', 'HOPE');
 defined('HOPE_VERSION') or define('HOPE_VERSION', '1.0');
 
 // 记录当前Unix时间戳
-defined('START_TIME') or define('START_TIME', microtime(true));
+defined('HOPE_START_TIME') or define('HOPE_START_TIME', microtime(true));
 
 // 记录内存消耗
-defined('START_MEM') or define('START_MEM', memory_get_usage());
+defined('HOPE_START_MEM') or define('HOPE_START_MEM', memory_get_usage());
 
 // 文件后缀
 defined('EXT') or define('EXT', '.php');

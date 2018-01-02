@@ -27,9 +27,9 @@ class Config
     {
         $files = File::getFolder(CONF_PATH)['file'];
         foreach ($files as $item => $file) {
-            if(is_file(CONF_PATH . $file)) {
+            if (is_file(CONF_PATH . $file)) {
                 $conf = self::load(CONF_PATH . $file);
-                if(0 === $item) {
+                if (0 === $item) {
                     self::$config = $conf;
                 } else {
                     self::$config[basename($file, EXT)] = $conf;
@@ -72,14 +72,14 @@ class Config
      */
     public static function get($name = '')
     {
-        if(!empty($name)) {
-            if(false !== strpos($name, '.')) {
+        if (!empty($name)) {
+            if (false !== strpos($name, '.')) {
 
                 $data = explode('.', $name, 2);
                 $data[0] = strtolower($data[0]);
 
-                if(isset($data[1]) && $data[1]) {
-                    return isset(self::$config[$data[0]][1]) ? self::$config[$data[0]][1] : null;
+                if (isset($data[1]) && $data[1]) {
+                    return isset(self::$config[$data[0]][$data[1]]) ? self::$config[$data[0]][$data[1]] : null;
                 }
                 return isset(self::$config[$data[0]]) ? self::$config[$data[0]] : null;
             } else {
@@ -97,7 +97,7 @@ class Config
     public static function load($file)
     {
         $file = str_replace('\\', '/', $file);
-        if(is_file($file)) {
+        if (is_file($file)) {
             return require $file;
         }
     }
