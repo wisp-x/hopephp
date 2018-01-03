@@ -59,7 +59,7 @@ HopePHP1.0的命名规范遵循PSR-2规范以及PSR-4自动加载规范。
 ## 感谢
 本框架核心代码参考了ThinkPHP，并感谢ThinkPHP提供的ORM和模板引擎
 
-## License
+## 版权信息
 
 HopePHP遵循Apache2开源协议发布，并提供免费使用。
 
