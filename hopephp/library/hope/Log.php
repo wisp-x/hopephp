@@ -56,6 +56,10 @@ class Log
     {
         $path = RUNTIME_PATH . Config::get('log.path') . DS;
 
+        if (!is_dir($path)) {
+            File::createFolder($path);
+        }
+
         if (isset($_SERVER['HTTP_HOST'])) {
             $current_uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         } else {
