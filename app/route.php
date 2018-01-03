@@ -15,4 +15,4 @@
 use hope\Route;
 
 //Route::any('(:all)', 'app\index\controller\index@index');
-Route::get('/', 'app\index\controller\index@index');
+Route::get('/', 'app\controller\index@index');

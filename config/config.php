@@ -31,7 +31,7 @@ return [
     // +----------------------------------------------------------------------
     'template'               => [
         // 模板文件目录，默认view
-        'view_path'    => 'view',
+        'view_path' => APP_PATH . 'view' . DS,
         // 模板文件缓存目录
         'cache_path' => TEMP_PATH,
         // 模板后缀

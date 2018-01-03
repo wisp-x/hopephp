@@ -10,9 +10,9 @@
 // | Author: WispX <i@wispx.cn>
 // +----------------------------------------------------------------------
 
-namespace app\index\controller;
+namespace app\controller;
 
-use app\index\model\Article;
+use app\model\Article;
 use hope\Config;
 use hope\Controller;
 use hope\Log;
@@ -36,6 +36,6 @@ class Index extends Controller
         $this->fetch();*/
 
         $this->view->assign('hope', 'HopePHP');
-        $this->fetch();
+        $this->view->fetch('index/index');
     }
 }

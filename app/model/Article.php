@@ -7,7 +7,7 @@
  * Link: http://gitee.com/wispx
  */
 
-namespace app\index\model;
+namespace app\model;
 
 use think\Model;
 
