@@ -1,4 +1,5 @@
 # HopePHP 1.0
+[![logo](hopephp/logo.png "logo")](http://cdn.wispx.cn/hopephp.png "logo")
 
 ## 目录结构
 初始的目录结构如下：
@@ -51,7 +52,7 @@ www  WEB部署目录（或者子目录）
 
 ## 命名规范
 
-HopePHP5的命名规范遵循PSR-2规范以及PSR-4自动加载规范。
+HopePHP1.0的命名规范遵循PSR-2规范以及PSR-4自动加载规范。
 
 ## 版权信息
 
