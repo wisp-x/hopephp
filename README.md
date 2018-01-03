@@ -3,6 +3,18 @@
 </p>
 <p align="center">HopePHP是一个轻量级、MVC设计模式的开发框架。</p>
 
+## 特性
+- 基于命名空间
+- 精简路由功能
+- 数据库基于ThinkORM
+- 模板引擎基于ThinkTemplate
+- 多配置、配置分离
+- 惰性加载
+- 支持Composer
+- 简化扩展机制
+
+> HopePHP的运行环境需要在PHP5.4以上
+
 ## 目录结构
 初始的目录结构如下：
 
@@ -42,18 +54,6 @@ www                 WEB部署目录（或者子目录）
 ├─LICENSE.txt       授权说明文件
 ├─README.md         README 文件
 ~~~
-
-## 特性
-- 基于命名空间
-- 精简路由功能
-- 数据库基于ThinkORM
-- 模板引擎基于ThinkTemplate
-- 多配置、配置分离
-- 惰性加载
-- 支持Composer
-- 简化扩展机制
-
-> HopePHP的运行环境需要在PHP5.4以上
 
 ## 命名规范
 
