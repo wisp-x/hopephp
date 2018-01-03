@@ -46,7 +46,7 @@ class Request
     {
         if (!$this->server) $this->server = $_SERVER;
         if (!$this->method) {
-            $this->method = isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']);
+            $this->method = isset($_SERVER['REQUEST_METHOD']) ? strtoupper($_SERVER['REQUEST_METHOD']) : false;
         }
     }
 

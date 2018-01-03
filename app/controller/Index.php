@@ -34,7 +34,6 @@ class Index extends Controller
         /*$this->assign('hope', 'HopePHP');
 
         $this->fetch();*/
-
         $this->view->assign('hope', 'HopePHP');
         $this->view->fetch('index/index');
     }
