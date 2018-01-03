@@ -1,6 +1,8 @@
 # HopePHP 1.0
 
-<img src="hopephp/logo.png" alt="HopePHP" align="center" />
+<p align="center">
+  <img src="hopephp/logo.png" alt="HopePHP" align="center" />
+</p>
 
 ## 目录结构
 初始的目录结构如下：
