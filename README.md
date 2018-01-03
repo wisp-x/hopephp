@@ -1,7 +1,6 @@
-# HopePHP 1.0
-
 <p align="center">
-  <img src="hopephp/logo.png" alt="HopePHP" align="center" />
+    <img src="hopephp/logo.png" alt="HopePHP" align="center" />
+    HopePHP是一个轻量级、MVC设计模式的开发框架。
 </p>
 
 ## 目录结构
