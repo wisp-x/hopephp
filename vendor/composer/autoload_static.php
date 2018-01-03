@@ -25,6 +25,7 @@ class ComposerStaticInit6f1c589d27a984fb3611773c81770df4
         'think\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-orm/src',
+            1 => __DIR__ . '/..' . '/topthink/think-template/src',
         ),
         'app\\' => 
         array (

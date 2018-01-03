@@ -18,6 +18,7 @@ use hope\Controller;
 use hope\Log;
 use hope\Request;
 use think\Db;
+use think\Template;
 
 class Index extends Controller
 {
@@ -30,8 +31,11 @@ class Index extends Controller
 
         //exit(dump(\config('?cache')));
 
-        $this->assign('hope', 'HopePHP');
-        $this->fetch();
+        /*$this->assign('hope', 'HopePHP');
 
+        $this->fetch();*/
+
+        $this->view->assign('hope', 'HopePHP');
+        $this->fetch();
     }
 }

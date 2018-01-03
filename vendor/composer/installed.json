@@ -39,5 +39,43 @@
             }
         ],
         "description": "think orm"
+    },
+    {
+        "name": "topthink/think-template",
+        "version": "1.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/top-think/think-template.git",
+            "reference": "a83fb6a8d9e4744dab7a1a917e229adf454a3e1c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/top-think/think-template/a83fb6a8d9e4744dab7a1a917e229adf454a3e1c.zip",
+            "reference": "a83fb6a8d9e4744dab7a1a917e229adf454a3e1c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6.0"
+        },
+        "time": "2017-11-01T07:17:30+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "think\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "liu21st",
+                "email": "liu21st@gmail.com"
+            }
+        ],
+        "description": "the php template engine"
     }
 ]

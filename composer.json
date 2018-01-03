@@ -1,6 +1,7 @@
 {
   "require": {
-    "topthink/think-orm": "^0.9.0"
+    "topthink/think-orm": "^0.9.0",
+    "topthink/think-template": "^1.0"
   },
   "autoload": {
     "psr-4": {
