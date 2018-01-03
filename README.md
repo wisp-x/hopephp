@@ -1,5 +1,6 @@
 # HopePHP 1.0
-[![logo](hopephp/logo.png "logo")](http://cdn.wispx.cn/hopephp.png "logo")
+
+<img src="hopephp/logo.png" alt="HopePHP" align="center" />
 
 ## 目录结构
 初始的目录结构如下：
