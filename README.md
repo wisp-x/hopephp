@@ -63,7 +63,7 @@ HopePHP遵循Apache2开源协议发布，并提供免费使用。
 
 All rights reserved。
 
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
+更多细节参阅 [LICENSE](LICENSE)
 
 ## 联系我
 - QQ 1591788658
