@@ -17,7 +17,7 @@ namespace hope;
 use think\Template;
 use traits\Jump;
 
-class Controller extends Template
+class Controller
 {
     use Jump;
 
