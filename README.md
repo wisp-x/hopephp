@@ -7,37 +7,40 @@
 初始的目录结构如下：
 
 ~~~
-www  WEB部署目录（或者子目录）
-├─app           应用目录
-│  ├─controller      控制器目录
-│  ├─model           模型目录
-│  ├─view            视图目录
-│  └─ ...            更多类库目录
+www                 WEB部署目录（或者子目录）
+├─app               应用目录
+│  ├─controller     控制器目录
+│  ├─model          模型目录
+│  ├─view           视图目录
+│  └─ ...           更多类库目录
 │  │
-│  ├─common.php         公共函数文件
-│  ├─config.php         公共配置文件
-│  ├─route.php          路由配置文件
-│  └─database.php       数据库配置文件
+│  ├─common.php     公共函数文件
+│  ├─config.php     公共配置文件
+│  ├─route.php      路由配置文件
+│  └─database.php   数据库配置文件
 │
-├─public                WEB目录（对外访问目录）
-│  ├─index.php          入口文件
-│  └─.htaccess          用于apache的重写
-│
-├─hopephp              框架系统目录
-│  ├─library            框架类库目录
-│  │  ├─think           Think类库包目录
-│  │  └─traits          系统Trait目录
+├─public            WEB目录（对外访问目录）
+│  ├─static         静态文件目录
+│  └─ ...
 │  │
-│  ├─temp                系统模板目录
-│  ├─helper.php         助手函数文件
-│  └─start.php          框架入口文件
+│  ├─index.php      入口文件
+│  └─.htaccess      用于apache的重写
 │
-├─extend                扩展类库目录
-├─runtime               应用的运行时目录（可写，可定制）
-├─vendor                第三方类库目录（Composer依赖库）
-├─composer.json         composer 定义文件
-├─LICENSE.txt           授权说明文件
-├─README.md             README 文件
+├─hopephp           框架系统目录
+│  ├─library        框架类库目录
+│  │  ├─think       Think类库包目录
+│  │  └─traits      系统Trait目录
+│  │
+│  ├─temp           系统模板目录
+│  ├─helper.php     助手函数文件
+│  └─start.php      框架入口文件
+│
+├─extend            扩展类库目录
+├─runtime           应用的运行时目录（可写，可定制）
+├─vendor            第三方类库目录（Composer依赖库）
+├─composer.json     composer 定义文件
+├─LICENSE.txt       授权说明文件
+├─README.md         README 文件
 ~~~
 
 ## 特性
