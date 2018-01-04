@@ -12,6 +12,7 @@
 
 // [ 助手函数 ]
 
+use think\Db;
 use hope\Debug;
 use hope\Config;
 use hope\Request;
@@ -79,5 +80,69 @@ if (!function_exists('request')) {
     function request()
     {
         return Request::instance();
+    }
+}
+
+if (!function_exists('db')) {
+    /**
+     * 实例化数据库类
+     * @param string        $name 操作的数据表名称（不含前缀）
+     * @param array|string  $config 数据库配置参数
+     * @param bool          $force 是否强制重新连接
+     * @return \think\db\Query
+     */
+    function db($name = '', $config = [], $force = false)
+    {
+        return Db::connect($config, $force)->name($name);
+    }
+}
+
+if (!function_exists('exception')) {
+    /**
+     * 抛出异常处理
+     *
+     * @param string    $msg  异常消息
+     * @param integer   $code 异常代码 默认为0
+     * @param string    $exception 异常类
+     *
+     * @throws Exception
+     */
+    function exception($msg, $code = 0, $exception = '')
+    {
+        $e = $exception ?: '\Exception';
+        throw new $e($msg, $code);
+    }
+}
+
+if (!function_exists('input')) {
+    /**
+     * 获取请求数据，为空获取所有，使用方法：
+     * input('s');
+     * input('post.s')
+     * @param string $name 参数名
+     * @return array|mixed|null|string
+     */
+    function input($name = '')
+    {
+        $request = Request::instance();
+
+        if (empty($name)) {
+            return Request::instance()->param();
+        } else {
+            if (false !== strpos($name, '.')) {
+                $data = explode('.', $name, 2);
+                $data[0] = strtolower($data[0]);
+                switch ($data[0]) {
+                    case 'post':
+                        return $request->post($data[1]);
+                        break;
+                    case 'get':
+                        return $request->get($data[1]);
+                        break;
+                }
+            }
+
+            return $request->param($name);
+        }
     }
 }

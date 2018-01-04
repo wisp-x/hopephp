@@ -306,11 +306,85 @@ class Request
     /**
      * 获取系统Server数据
      * @param string $name 为空获取所有
-     * @return null
+     * @return null|array
      */
     public function server($name = '')
     {
         return empty($name) ? $this->server : (isset($this->server[$name]) ? $this->server[$name] : null);
+    }
+
+    /**
+     * 获取请求数据
+     * @param string $name
+     * @return array|mixed|null
+     */
+    public function param($name = '')
+    {
+        switch ($this->method) {
+            case 'POST':
+                $data = $this->post();
+                break;
+            case 'GET':
+                $data = $this->get();
+                break;
+        }
+
+        if (empty($name)) {
+            return $data;
+        } else {
+            return isset($data[$name]) ? $data[$name] : null;
+        }
+    }
+
+    /**
+     * 获取POST请求参数
+     * @param string $name
+     * @return mixed|null|array
+     */
+    public function post($name = '')
+    {
+        $data = $this->filter($_POST);
+
+        if (empty($name)) {
+            return $data;
+        } else {
+            return isset($data[$name]) ? $data[$name] : null;
+        }
+    }
+
+    /**
+     * 获取GET参数
+     * @param string $name
+     * @return mixed|null|array
+     */
+    public function get($name = '')
+    {
+        $data = $this->filter($_GET);
+
+        if (empty($name)) {
+            return $data;
+        } else {
+            return isset($data[$name]) ? $data[$name] : null;
+        }
+    }
+
+    /**
+     * 过滤
+     * @param $array
+     * @return mixed
+     */
+    public function filter(&$array) {
+        while(list($key, $var) = each($array)) {
+            if ($key != 'argc' && $key != 'argv' && (strtoupper($key) != $key || '' . intval($key) == "$key")) {
+                if (is_string($var)) {
+                    $array[$key] = stripslashes($var);
+                }
+                if (is_array($var))  {
+                    $array[$key] = $this->filter($var);
+                }
+            }
+        }
+        return $array;
     }
 
 }
