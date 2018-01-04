@@ -19,6 +19,8 @@ HopePHP是作者工作之余开发的一个轻型框架，作者我要做的就�
 
 > HopePHP的运行环境需要在PHP5.4以上
 
+详细使用方法请查阅 <a href="https://www.kancloud.cn/wispx/hopephp" target="_block">HopePHP 1.0开发文档</a>
+
 ## 目录结构
 初始的目录结构如下：
 
