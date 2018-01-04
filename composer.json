@@ -20,9 +20,7 @@
   },
   "require": {
     "php": ">=5.4.0",
-    "wisp-x/hopephp": "~1.0.0",
-    "topthink/think-orm": "^0.9.0",
-    "topthink/think-template": "^1.0"
+    "wispx/hopephp": "~1.1"
   },
   "autoload": {
     "psr-4": {
